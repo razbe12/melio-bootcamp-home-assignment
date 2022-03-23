@@ -18,12 +18,16 @@ export const Home = () => {
       const stateData = getCandidatesArray(data);
       setCandidatesFunction(stateData);
     } else {
-      const fetchedData = await fetchCandidates();
-      const transformedData = transformCandidatesData(fetchedData);
-      setPersistentCandidatesData(transformedData);
+      try {
+        const fetchedData = await fetchCandidates();
+        const transformedData = transformCandidatesData(fetchedData);
+        setPersistentCandidatesData(transformedData);
 
-      const stateData = getCandidatesArray(transformedData);
-      setCandidatesFunction(stateData);
+        const stateData = getCandidatesArray(transformedData);
+        setCandidatesFunction(stateData);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 

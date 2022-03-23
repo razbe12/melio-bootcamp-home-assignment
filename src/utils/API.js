@@ -1,14 +1,12 @@
-// Hint: you can copy the URL to a browser and see the result
 const FETCH_CANDIDATES_URL =
   "https://randomuser.me/api/?seed=abcd&nat=us,dk,fr,gb&results=50&page=1";
 
 export const fetchCandidates = async () => {
-  // Add your implementation of candidates data fetching here, use the URL provided above
   try {
-    let response = await fetch(FETCH_CANDIDATES_URL);
-    let result = await response.json();
+    const response = await fetch(FETCH_CANDIDATES_URL);
+    const result = await response.json();
     return result.results;
   } catch (error) {
-    return {};
+    return error;
   }
 }
