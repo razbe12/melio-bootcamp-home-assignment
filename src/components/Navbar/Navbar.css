@@ -1,3 +1,7 @@
 #navbar {
-  border-bottom: 1px solid grey;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 7vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

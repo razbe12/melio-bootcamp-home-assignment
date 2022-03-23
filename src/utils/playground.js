@@ -5,7 +5,9 @@
   Once you complete your first task, remove this file
 * */
 
-import {fetchCandidates} from "./API";
+import { fetchCandidates } from "./API";
+import { transformCandidatesData } from "./helper";
+
 
 const runPlayground = async () => {
 
@@ -15,8 +17,8 @@ const runPlayground = async () => {
 
   // An example of executing code from API.js file:
   const candidates = await fetchCandidates();
-  console.log("candidates data: ", candidates);
-
+  const transformed = transformCandidatesData(candidates);
+  console.log("candidates data: ", transformed);
 }
 
 // We call this function in App.jsx file, on every page refresh it will run the function again

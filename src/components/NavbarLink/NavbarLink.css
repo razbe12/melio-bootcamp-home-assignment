@@ -1,1 +1,16 @@
+.navbar-item {
+    cursor: pointer;
+    padding: 20px 10px;
+}
 
+.navbar-item:first-child {
+    padding-left: 20px;
+}
+
+.navbar-item:hover {
+    color: blueviolet;
+}
+
+.active {
+    color: blueviolet;
+}

@@ -4,4 +4,11 @@ const FETCH_CANDIDATES_URL =
 
 export const fetchCandidates = async () => {
   // Add your implementation of candidates data fetching here, use the URL provided above
+  try {
+    let response = await fetch(FETCH_CANDIDATES_URL);
+    let result = await response.json();
+    return result.results;
+  } catch (error) {
+    return {};
+  }
 }

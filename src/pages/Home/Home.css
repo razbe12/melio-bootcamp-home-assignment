@@ -1,8 +1,21 @@
 #home {
   display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 93vh;
+}
+
+.wrapper {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 50%;
+}
+
+.home-info {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
 
 .home-title {
@@ -17,6 +30,49 @@
   font-size: 14px;
 }
 
-.candidates-list{
+.candidates-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  gap: 4%;
   margin-block-start: 30px;
+}
+
+.candidates-list>* {
+  width: 90%;
+  padding: 0 20px 0 15px;
+}
+
+@media (min-width: 600px) {
+
+  .candidates-list::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .candidates-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .candidates-list::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  .candidates-list:hover::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .home-info {
+    align-items: center
+  }
 }

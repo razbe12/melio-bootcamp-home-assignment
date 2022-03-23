@@ -1,53 +1,54 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
-import {fetchCandidates} from "../../utils/API.js";
-import {getPersistentCandidatesData} from "../../utils/helper.js";
-import {FavoriteIcon} from "../../components/FavoriteIcon/FavoriteIcon";
+import { fetchCandidates } from "../../utils/API.js";
+import { getCandidatesArray, getPersistentCandidatesData, setPersistentCandidatesData, transformCandidatesData, transformCandidates } from "../../utils/helper.js";
+import { Card } from "../../components/Card/Card";
 
-/*
-  This is a "React component", you don't really need to know react in dept,
-*/
 export const Home = () => {
 
-  // once you populated candidates variable with data
-  // search online how to "render an array of items in react" and add your implementation below (line 41)
-  // to update the candidates variable, you need to use setCandidatesFunction
-  // Note - every time you use this function, it will auto refresh your Home page, we call it in React - "Render".
   const [candidates, setCandidatesFunction] = useState([]);
 
-  // this is "React Hook", a function that will be called ONCE, on every page load
   useEffect(() => {
     runOnHomePageLoad();
   }, []);
 
   const runOnHomePageLoad = async () => {
-    // once you will succeed getting the data, make it persistent as required.
-    // if the data is already fetched and persistent - don't fetch it again, use the condition below
     const data = getPersistentCandidatesData();
     if (data) {
-      setCandidatesFunction(data);
+      const stateData = getCandidatesArray(data);
+      setCandidatesFunction(stateData);
     } else {
-
-      // replace the empty array once you implemented the fetching code with: await fetchCandidates()
       const fetchedData = await fetchCandidates();
+      const transformedData = transformCandidatesData(fetchedData);
+      setPersistentCandidatesData(transformedData);
 
-      // replace the empty array once the data is transformed
-      const transformedData = [];
-
-      //this function will save a "React State" and allow you to use the data via candidates variable outside.
-      setCandidatesFunction(transformedData);
+      const stateData = getCandidatesArray(transformedData);
+      setCandidatesFunction(stateData);
     }
+  }
+
+  const onFavoriteChanged = (uuid) => {
+    const candidateIndex = candidates.findIndex(c => c.uuid == uuid);
+    candidates[candidateIndex].isFavorite = !candidates[candidateIndex].isFavorite;
+    setCandidatesFunction(candidates);
+    const transformedData = transformCandidates(candidates);
+    setPersistentCandidatesData(transformedData);
+  }
+
+  const getCandidateCards = () => {
+    return candidates.map((candidate) => <Card key={candidate.uuid} candidate={candidate} onFavoriteChanged={onFavoriteChanged} />);
   }
 
   return (
     <div id="home">
-      <div className="home-title">Firm's candidates</div>
-      <div className="home-subtitle">write your Name</div>
-      <div className="candidates-list">
-
-        ADD YOUR CANDIDATES CARD LIST IMPLEMENTATION HERE,
-        USE candidates VARIABLE
-
+      <div className="wrapper">
+        <div className="home-info">
+          <div className="home-title">Firm's candidates</div>
+          <div className="home-subtitle">Raz Ben Sasson</div>
+        </div>
+        <div className="candidates-list scrollbox">
+          {getCandidateCards()}
+        </div>
       </div>
     </div>
   );
