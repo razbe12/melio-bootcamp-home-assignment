@@ -3,7 +3,7 @@
 Welcome to the Melio Candidates app.
 This is a simple app which displays randomly generated candidates data in a list, using the `randomuser.me` API.
 
-[Candidates App example video](https://user-images.githubusercontent.com/29336590/159868382-f7dad966-70d1-43ed-ab8a-37b0d155f04f.mp4)
+[Raz Candidates App example video](https://user-images.githubusercontent.com/29336590/159868780-361e45fa-647e-4407-852d-02e87e059546.mp4)
 
 
 
