@@ -3,7 +3,11 @@
 Welcome to the Melio Candidates app.
 This is a simple app which displays randomly generated candidates data in a list, using the `randomuser.me` API.
 
-[Watch Melio Candidates App example video](https://user-images.githubusercontent.com/39100923/154835000-7da24dff-9802-4a8a-8c39-f252f3f612ac.mov)
+[Candidates App example video](https://user-images.githubusercontent.com/29336590/159868382-f7dad966-70d1-43ed-ab8a-37b0d155f04f.mp4)
+
+
+
+
 
 ### Motivation
 The purpose of this task is to give you a glimpse into the bootcamp training process and into our day-to-day work as a developers.
